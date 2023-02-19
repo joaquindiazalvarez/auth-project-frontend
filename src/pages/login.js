@@ -23,7 +23,7 @@ export const Login = () =>{
           .then(result => {
             if(result.token){
                 sessionStorage.setItem("token", result.token)
-                navigate('/')}
+                navigate('/birthday')}
             else{
                 if (result.error === "email") setProblem("email");
                 else if (result.error === "password") setProblem("password");
