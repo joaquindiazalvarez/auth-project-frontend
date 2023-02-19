@@ -1,6 +1,8 @@
-import { useState, useEffect} from "react";
+import { useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "",email: "", password: "", birthdate: ""});
   //const [test, setTest] = useState({ name: false, email: false, password: false, confirm: false, birthdate: false});
   const [error, setError] = useState(false);
@@ -26,10 +28,14 @@ export const Register = () => {
       }
   
   const handleSubmit = (e) => {
-    if (form["name"] !== "" && testemail == true && testpassword == true && form["password"] !== "" &&  form["password"] == confirm && form["birthdate"] !== "") {
+    if (form["name"] !== "" && testemail === true && testpassword === true && form["password"] !== "" &&  form["password"] === confirm && form["birthdate"] !== "") {
       postRegister(form);
+      setError(false)
       setSuccess(true);
       console.log(form)
+      setTimeout(()=>{
+        navigate('/login');
+      }, 2000)
     } else {
       setError(true);
       console.log("las contraseñas no coinciden", form.password, confirm);
@@ -64,19 +70,19 @@ export const Register = () => {
     colorName = "form-control form-control-lg border-4 border-danger";
   }
   let colorEmail = "";
-  if (testemail == true) {
+  if (testemail === true) {
     colorEmail = "form-control form-control-lg border-4 border-success shadow-none";
   } else {
     colorEmail = "form-control form-control-lg border-4 border-danger";
   }
   let colorPassword = "";
-  if (testpassword == true) {
+  if (testpassword === true) {
     colorPassword = "form-control form-control-lg border-4 border-success";
   } else {
     colorPassword = "form-control form-control-lg border-4 border-danger";
   }
   let colorConfirm = "";
-  if (form["password"] !== "" &&  form["password"] == confirm) {
+  if (form["password"] !== "" &&  form["password"] === confirm) {
     colorConfirm = "form-control form-control-lg border-4 border-success";
   } else {
     colorConfirm = "form-control form-control-lg border-4 border-danger";
@@ -216,12 +222,13 @@ export const Register = () => {
                                     </div>
                                   </form>
                                   {success && <h2 className="text-success text-center">Sucess!</h2>}
+                                  {error && <h5 className="text-danger text-center">Error at filling form</h5>}
                                 </div>
                                 <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                   <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                     className="img-fluid"
-                                    alt="Sample image"
+                                    alt="Sample"
                                   ></img>
                                 </div>
                               </div>
