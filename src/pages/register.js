@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 export const Register = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "",email: "", password: "", birthdate: ""});
-  //const [test, setTest] = useState({ name: false, email: false, password: false, confirm: false, birthdate: false});
   const [error, setError] = useState(false);
+  const [used, setUsed] = useState()
   const [success, setSuccess] = useState(false);
   const [confirm, setConfirm] = useState();
   const postRegister = (form) => {
@@ -27,8 +27,27 @@ export const Register = () => {
       .catch(error => console.log('error', error));
       }
   
+  const validateEmail = (email) => {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({email: email});
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch(process.env.REACT_APP_BACKEND_URL + "/auth/validate/", requestOptions)
+      .then(response => response.json())
+      .then(result => setUsed(result.email_in_use))
+      .catch(error => console.log('error', error));
+      }
+      
   const handleSubmit = (e) => {
-    if (form["name"] !== "" && testemail === true && testpassword === true && form["password"] !== "" &&  form["password"] === confirm && form["birthdate"] !== "") {
+    if (form["name"] !== "" && testemail === true && testpassword === true && form["password"] !== "" &&  form["password"] === confirm && form["birthdate"] !== "" && used === false) {
       postRegister(form);
       setError(false)
       setSuccess(true);
@@ -45,6 +64,7 @@ export const Register = () => {
   const onChangeName = (e) => {
     setForm({...form, name: e.target.value});    
   }
+  
   const onChangeEmail = (e) => {
     setForm({ ...form, email: e.target.value });
   };
@@ -57,12 +77,12 @@ export const Register = () => {
   const onChangeBirthdate = (e) => {
     setForm({ ...form, birthdate: e.target.value})
   }
-
+  
   const regexemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const regexpassword = /^(?=.*[A-Z])(?=.*[!@#$&*.+-_])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
   const testemail = regexemail.test(form["email"]);
+  const regexpassword = /^(?=.*[A-Z])(?=.*[!@#$&*.+-_])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
   const testpassword = regexpassword.test(form["password"]);
-
+  
   let colorName = "";
   if (form["name"] !== "") {
     colorName = "form-control form-control-lg border-4 border-success shadow-none";
@@ -71,10 +91,10 @@ export const Register = () => {
   }
   let colorEmail = "";
   if (testemail === true) {
+    validateEmail(form.email);
     colorEmail = "form-control form-control-lg border-4 border-success shadow-none";
-  } else {
-    colorEmail = "form-control form-control-lg border-4 border-danger";
-  }
+  } else colorEmail = "form-control form-control-lg border-4 border-danger";
+  
   let colorPassword = "";
   if (testpassword === true) {
     colorPassword = "form-control form-control-lg border-4 border-success";
@@ -223,6 +243,7 @@ export const Register = () => {
                                   </form>
                                   {success && <h2 className="text-success text-center">Sucess!</h2>}
                                   {error && <h5 className="text-danger text-center">Error at filling form</h5>}
+                                  {used && <h5 className="text-danger text-center">Email in use</h5>}
                                 </div>
                                 <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                   <img
