@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { tokenContext } from "../App";
 
 export const Login = () =>{
+    const { token, setToken } = useContext(tokenContext);
     const navigate = useNavigate();
     const [form, setForm] = useState({email:"", password:""})
     const [problem, setProblem] = useState(false)
@@ -23,6 +25,7 @@ export const Login = () =>{
           .then(result => {
             if(result.token){
                 sessionStorage.setItem("token", result.token)
+                setToken(result.token)
                 navigate('/birthday')}
             else{
                 if (result.error === "email") setProblem("email");

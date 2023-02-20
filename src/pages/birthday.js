@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getNextBirthdayTime from "../utils/timeleft";
 import { Timer } from "../components/timer.js";
+import cake from "../assets/cake.png"
 
 export const Birthday = () => {
     const [info, setInfo] = useState({});
@@ -32,5 +33,6 @@ export const Birthday = () => {
     return (<div>
         {info && <h1>Hello {info.name}, your birthdate is {info.birthdate}, your nex birthday is {nextBirthday}</h1>}
         {info && <Timer birthday={info.birthdate}/>}
+        <img src={cake}></img>
     </div>);
 }
