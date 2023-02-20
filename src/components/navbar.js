@@ -49,7 +49,7 @@ export const Navbar = () => {
               className="btn btn-primary m-1"
               onClick={() => navigation("/birthday")}
             >
-              Birthday
+              Birthday!
             </button>
           )}
         </div>

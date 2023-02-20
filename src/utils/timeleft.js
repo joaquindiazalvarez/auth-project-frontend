@@ -1,9 +1,12 @@
 const getNextBirthdayTime = (birthday) => {
     const today = new Date();
     const birthdate = new Date(birthday);
+    birthdate.setUTCHours(3)
     const currentYear = today.getFullYear();
     const birthdateThisYear = new Date(currentYear, birthdate.getMonth(), birthdate.getDate());
-  
+   console.log(birthdate)
+    if (today.getMonth() === birthdate.getMonth() && today.getDate() === birthdate.getDate()) return 0
+
     let timeLeft = birthdateThisYear.getTime() - today.getTime();
   
     if (timeLeft < 0) {

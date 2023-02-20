@@ -7,7 +7,7 @@ export const Timer = ({ birthday }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimeLeft(getNextBirthdayTime(birthday));
-    }, 1000);
+    }, 1);
 
     return () => clearInterval(intervalId);
   }, [birthday]);
@@ -17,12 +17,17 @@ export const Timer = ({ birthday }) => {
   const minutesLeft = Math.floor((timeLeft / (1000 * 60)) % 60);
   const secondsLeft = Math.floor((timeLeft / 1000) % 60);
 
-  return (
-    <div>
-      <h2>Countdown to next birthday:</h2>
-      <p>
-        {daysLeft} days, {hoursLeft} hours, {minutesLeft} minutes, {secondsLeft} seconds
-      </p>
+  return (<div>    
+      {timeLeft !== 0 && <div className="text-center">
+        <h2>Countdown to next birthday:</h2>
+        <p><b>
+          {daysLeft} days, {hoursLeft} hours, {minutesLeft} minutes, {secondsLeft} seconds
+        </b></p>
+      </div>}
+      {timeLeft === 0 && <div className="text-center">
+        <h1>TODAY IT'S YOUR BIRTHDATE!</h1>
+        <h1>Congratulations!</h1>
+        </div>}
     </div>
   );
 };

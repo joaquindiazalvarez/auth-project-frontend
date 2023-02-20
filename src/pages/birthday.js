@@ -30,8 +30,8 @@ export const Birthday = () => {
 
         
     },[])
-    return (<div>
-        {info && <h1>Hello {info.name}, your birthdate is {info.birthdate}, your nex birthday is {nextBirthday}</h1>}
+    return (<div className="text-center">
+        {info && <h1>Hello {info.name}!</h1>}
         {info && <Timer birthday={info.birthdate}/>}
         <img src={cake}></img>
     </div>);
