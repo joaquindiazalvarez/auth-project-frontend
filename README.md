@@ -9,7 +9,14 @@
   que posee un registro y un login.
   
 # ⚡Empezando...
-Para correr la aplicación, después de clonar el repositorio, se debe entrar a la carpeta del proyecto con:  
+Luego de crear el repositorio, creamos dentro de el un archivo llamado .env, donde escribimos lo siguiente
+
+REACT_APP_BACKEND_URL=http://localhost:__puerto__```
+
+Reemplazar __puerto__ por el puesto que se le asigne desde el backend, que por lo general es 8000  
+y guardamos.
+
+Para correr la aplicación, se debe entrar a la carpeta del proyecto con:  
 
 ```$ cd auth-project-frontend```  
     
