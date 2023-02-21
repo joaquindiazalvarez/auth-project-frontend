@@ -47,9 +47,9 @@ export const Register = () => {
       }
       
   const handleSubmit = (e) => {
-    //this function ask if form is well filled
-    //redirects to login if is ok
-    //show error if its wrong
+    /*this function ask if form is well filled
+    redirects to login if is ok
+    show error if its wrong*/
     if (form.name !== "" && testemail === true && testpassword === true && form.password !== "" &&  form.password === confirm && form.birthdate !== "" && used === false) {
       postRegister(form);
       setError(false)

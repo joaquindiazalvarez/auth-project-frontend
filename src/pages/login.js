@@ -8,8 +8,8 @@ export const Login = () =>{
     const [form, setForm] = useState({email:"", password:""})
     const [problem, setProblem] = useState(false)
     const postLogin = (form) => {
-        //this fetch post information and login, setting token 
-        //in session storage and in tokenContext
+        /*this fetches post information and login, setting token 
+        in session storage and in tokenContext*/
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         var raw = JSON.stringify(form);
