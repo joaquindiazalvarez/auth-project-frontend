@@ -14,7 +14,7 @@ Luego de clonar el repositorio, creamos dentro de el un archivo llamado .env, do
 
 ```$ REACT_APP_BACKEND_URL=http://localhost:puerto```  
 
-Reemplazar __puerto__ por el puesto que se le asigne desde el backend, que por lo general es 8000  
+Reemplazar __puerto__ por el puerto que se le asigne desde el backend, que por lo general es 8000 en Django  
 y guardamos.
 
 Para correr la aplicación, se debe entrar a la carpeta del proyecto con:  
