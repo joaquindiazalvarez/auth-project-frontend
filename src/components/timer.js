@@ -6,19 +6,20 @@ export const Timer = ({ birthday }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      //This function updates the timeLeft variable every second
       setTimeLeft(getNextBirthdayTime(birthday));
-    }, 1);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, [birthday]);
-
+  //obtains time left in days, hours, minutes and seconds
   const daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   const hoursLeft = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
   const minutesLeft = Math.floor((timeLeft / (1000 * 60)) % 60);
   const secondsLeft = Math.floor((timeLeft / 1000) % 60);
 
   return (<div>    
-      {timeLeft !== 0 && <div className="text-center">
+      {timeLeft > 0 && <div className="text-center">
         <h2>Countdown to next birthday:</h2>
         <p><b>
           {daysLeft} days, {hoursLeft} hours, {minutesLeft} minutes, {secondsLeft} seconds

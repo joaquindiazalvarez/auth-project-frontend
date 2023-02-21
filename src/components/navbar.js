@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { tokenContext } from "../App";
 
@@ -6,7 +6,9 @@ export const Navbar = () => {
     const { token, setToken } = useContext(tokenContext);
   const navigation = useNavigate();
   useEffect(() => {
+    //This useEffect updates the tokenContext, with the token obtained in login component
     setToken(sessionStorage.getItem("token"));
+
   }, [token]);
   return (
     <nav className="navbar navbar-light bg-light">

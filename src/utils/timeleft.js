@@ -1,4 +1,7 @@
 const getNextBirthdayTime = (birthday) => {
+    //this function takes a birthdate and outputs
+    //the time in miliseconds that remains for a new birthday
+    //if the birthdate's corresponding birthday is today, it outputs 0
     const today = new Date();
     const birthdate = new Date(birthday);
     birthdate.setUTCHours(3)

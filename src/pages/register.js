@@ -9,7 +9,7 @@ export const Register = () => {
   const [success, setSuccess] = useState(false);
   const [confirm, setConfirm] = useState();
   const postRegister = (form) => {
-
+    //this fetch post information contained in form variable
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify(form);
@@ -28,7 +28,7 @@ export const Register = () => {
       }
   
   const validateEmail = (email) => {
-
+    //This fetch checks if email is in use by asking the backend
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({email: email});
@@ -47,7 +47,10 @@ export const Register = () => {
       }
       
   const handleSubmit = (e) => {
-    if (form["name"] !== "" && testemail === true && testpassword === true && form["password"] !== "" &&  form["password"] === confirm && form["birthdate"] !== "" && used === false) {
+    //this function ask if form is well filled
+    //redirects to login if is ok
+    //show error if its wrong
+    if (form.name !== "" && testemail === true && testpassword === true && form.password !== "" &&  form.password === confirm && form.birthdate !== "" && used === false) {
       postRegister(form);
       setError(false)
       setSuccess(true);
@@ -57,7 +60,6 @@ export const Register = () => {
       }, 2000)
     } else {
       setError(true);
-      console.log("las contraseñas no coinciden", form.password, confirm);
     }
     e.preventDefault();
   };
@@ -78,41 +80,47 @@ export const Register = () => {
     setForm({ ...form, birthdate: e.target.value})
   }
   
-  const regexemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  //regex for entering valid email and passwords
+  const regexemail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const testemail = regexemail.test(form["email"]);
   const regexpassword = /^(?=.*[A-Z])(?=.*[!@#$&*.+-_])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
   const testpassword = regexpassword.test(form["password"]);
   
+  //next chunk of code evaluates if
+  //each input on form is valid
+  //and paint the input of red or green
+  
+  let green = "form-control form-control-lg border-4 border-success"
+  let red = "form-control form-control-lg border-4 border-danger"
   let colorName = "";
   if (form["name"] !== "") {
-    colorName = "form-control form-control-lg border-4 border-success shadow-none";
+    colorName = green;
   } else {
-    colorName = "form-control form-control-lg border-4 border-danger";
+    colorName = red;
   }
   let colorEmail = "";
   if (testemail === true) {
     validateEmail(form.email);
-    colorEmail = "form-control form-control-lg border-4 border-success shadow-none";
-  } else colorEmail = "form-control form-control-lg border-4 border-danger";
+    colorEmail = green;
+  } else colorEmail = red;
   
   let colorPassword = "";
   if (testpassword === true) {
-    colorPassword = "form-control form-control-lg border-4 border-success";
+    colorPassword = green;
   } else {
-    colorPassword = "form-control form-control-lg border-4 border-danger";
+    colorPassword = red;
   }
   let colorConfirm = "";
   if (form["password"] !== "" &&  form["password"] === confirm) {
-    colorConfirm = "form-control form-control-lg border-4 border-success";
+    colorConfirm = green;
   } else {
-    colorConfirm = "form-control form-control-lg border-4 border-danger";
+    colorConfirm = red;
   }
-
   let colorBirthdate = "";
   if (form["birthdate"] !== "") {
-    colorBirthdate = "form-control form-control-lg border-4 border-success";
+    colorBirthdate = green;
   } else {
-    colorBirthdate = "form-control form-control-lg border-4 border-danger";
+    colorBirthdate = red;
   }
     return(
             <div>

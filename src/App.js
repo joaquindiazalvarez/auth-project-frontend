@@ -8,6 +8,8 @@ import { PrivateRoute } from "./pages/private_route.js";
 import { Birthday } from './pages/birthday';
 import { Navbar } from './components/navbar';
 
+//this context is for connect the navbar with the 
+//login components. that way, when logging, navbar knows it
 export const tokenContext = createContext();
 
 const App = ()=>{
