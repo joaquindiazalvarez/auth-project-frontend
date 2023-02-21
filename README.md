@@ -9,7 +9,7 @@
   que posee un registro y un login.
   
 # ⚡Empezando...
-Luego de crear el repositorio, creamos dentro de el un archivo llamado .env, donde escribimos lo siguiente
+Luego de clonar el repositorio, creamos dentro de el un archivo llamado .env, donde escribimos lo siguiente
 
 
 ```$ REACT_APP_BACKEND_URL=http://localhost:puerto```  
