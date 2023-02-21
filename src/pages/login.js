@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../App";
+import { Input } from "../components/input.js"
 
 export const Login = () =>{
     const { setToken } = useContext(tokenContext);
@@ -70,45 +71,9 @@ export const Login = () =>{
                                     className="mx-1 mx-md-4"
                                     onSubmit={handleSubmit}
                                   >
-
-
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="email submit"
-                                          id="form3Example3c"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className="form-control form-control-lg"
-                                          onChange={onChangeEmail}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example3c"
-                                        >
-                                          Your Email 
-                                        </label>
-                                      </div>
-                                    </div>
-        
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="password"
-                                          id="form3Example4c"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className="form-control form-control-lg"
-                                          onChange={onChangePassword}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example4c"
-                                        >
-                                          Password 
-                                        </label>
-                                      </div>
-                                    </div>
+                                    <Input color="form-control form-control-lg" onChange={onChangeEmail} text="Your Email" type="email submit"/>
+                                    <Input color="form-control form-control-lg" onChange={onChangePassword} text="Password" type="password"/>
+                                    
                                     {problem && problem === "email" && <h5 className="text-danger">Wrong email</h5>}
                                     {problem && problem === "password" && <h5 className="text-danger">Wrong password</h5>}
                                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

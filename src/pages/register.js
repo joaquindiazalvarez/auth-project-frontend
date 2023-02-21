@@ -1,5 +1,6 @@
 import { useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import { Input } from '../components/input.js'
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -146,100 +147,11 @@ export const Register = () => {
                                     className="mx-1 mx-md-4"
                                     onSubmit={handleSubmit}
                                   >
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="name submit"
-                                          id="form3Example4c"
-                                          className={colorName}
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          onChange={onChangeName}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example4c"
-                                        >
-                                          Name
-                                        </label>
-                                      </div>
-                                    </div>
-
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="email submit"
-                                          id="form3Example3c"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className={colorEmail}
-                                          onChange={onChangeEmail}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example3c"
-                                        >
-                                          Your Email <b>(enter a valid one)</b>
-                                        </label>
-                                      </div>
-                                    </div>
-        
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="password"
-                                          id="form3Example4c"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className={colorPassword}
-                                          onChange={onChangePassword}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example4c"
-                                        >
-                                          Password <b>(numbers, uppercase and lowercase. 8 or more characters)</b>
-                                        </label>
-                                      </div>
-                                    </div>
-        
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="password"
-                                          id="form3Example4cd"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className={colorConfirm}
-                                          onChange={onChangeConfirm}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example4cd"
-                                        >
-                                          Repeat your password
-                                        </label>
-                                      </div>
-                                    </div>
-  
-                                    <div className="d-flex flex-row align-items-center mb-4">
-                                      <div className="form-outline flex-fill mb-0">
-                                        <input
-                                          type="date"
-                                          id="birthday"
-                                          //This must be replaced, its not OK
-                                          style={{boxShadow: "inset 0 0 0 #ddd"}}
-                                          className={colorBirthdate}
-                                          onChange={onChangeBirthdate}
-                                        />
-                                        <label
-                                          className="form-label"
-                                          htmlFor="form3Example4cd"
-                                        >
-                                          Birthdate
-                                        </label>
-                                      </div>
-                                    </div>
+                                    <Input color={colorName} onChange={onChangeName} text="Name" type="name submit"/>
+                                    <Input color={colorEmail} onChange={onChangeEmail} text="Your Email(enter a valid one)" type="email submit"/>
+                                    <Input color={colorPassword} onChange={onChangePassword} text="Password (numbers, uppercase and lowercase. 8 or more characters)" type="password"/>
+                                    <Input color={colorConfirm} onChange={onChangeConfirm} text="Repeat your password" type="password"/>
+                                    <Input color={colorBirthdate} onChange={onChangeBirthdate} text="Birthdate" type="date"/>
 
                                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                       <button
