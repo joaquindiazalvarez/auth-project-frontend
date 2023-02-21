@@ -11,7 +11,8 @@
 # ⚡Empezando...
 Luego de crear el repositorio, creamos dentro de el un archivo llamado .env, donde escribimos lo siguiente
 
-REACT_APP_BACKEND_URL=http://localhost:__puerto__```
+
+```$ REACT_APP_BACKEND_URL=http://localhost:puerto```  
 
 Reemplazar __puerto__ por el puesto que se le asigne desde el backend, que por lo general es 8000  
 y guardamos.
