@@ -101,7 +101,7 @@ export const Register = () => {
     colorName = red;
   }
   let colorEmail = "";
-  if (testemail === true) {
+  if (testemail === true && setUsed===false) {
     validateEmail(form.email);
     colorEmail = green;
   } else colorEmail = red;

@@ -1,6 +1,8 @@
 import React from 'react';
 
 export const Wrapper = ({ children, text }) => {
+    /* made this wrapper function because code was hard to read.
+    login & register had the same divs wrapping it */
   return (
     <div>
         <div className="row">
