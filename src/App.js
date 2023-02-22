@@ -4,7 +4,7 @@ import './App.css';
 import { Home } from './pages/home.js'
 import { Login } from './pages/login.js'
 import { Register } from './pages/register.js'
-import { PrivateRoute } from "./pages/private_route.js";
+import { PrivateRoute } from "./components/private_route.js";
 import { Birthday } from './pages/birthday';
 import { Navbar } from './components/navbar';
 
