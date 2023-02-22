@@ -37,8 +37,8 @@ export const Login = () =>{
           .catch(error => console.log(error, "error"))
     }
     const handleSubmit = (e) => {
-        postLogin(form)
         e.preventDefault()
+        postLogin(form)
     };
     const onChangeEmail = (e) => {
         setForm({ ...form, email: e.target.value });

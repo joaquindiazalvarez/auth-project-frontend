@@ -51,6 +51,7 @@ export const Register = () => {
     /*this function ask if form is well filled
     redirects to login if is ok
     show error if its wrong*/
+    e.preventDefault();
     if (form.name !== "" && testemail === true && testpassword === true && form.password !== "" &&  form.password === confirm && form.birthdate !== "" && used === false) {
       postRegister(form);
       setError(false)
@@ -62,7 +63,6 @@ export const Register = () => {
     } else {
       setError(true);
     }
-    e.preventDefault();
   };
   const onChangeName = (e) => {
     setForm({...form, name: e.target.value});    
